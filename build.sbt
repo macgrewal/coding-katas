@@ -1,4 +1,4 @@
-name := "kata-todo"
+name := "coding-katas"
 
 version := "1.0"
 
