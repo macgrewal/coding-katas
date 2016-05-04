@@ -1,11 +1,11 @@
 package imperative2Func
 
-import scala.io.StdIn
+import scala.io.StdIn._
 
 object Runner {
   def main (args: Array[String]) : Unit = {
-    Imperative.run
-    //Functional.run
+    //Imperative.run
+    Functional.run
   }
 }
 
@@ -16,7 +16,7 @@ object Imperative {
     var text = ""
 
     while (on) {
-      text = StdIn.readLine()
+      text = readLine()
       if (text == "withdraw") {
         println("Withdrawing £100")
         balance -= 100
@@ -33,5 +33,22 @@ object Imperative {
 }
 
 object Functional {
-  def run(): Unit = ???
+  def run(): Unit = loop(1000)
+
+  def loop(balance: Int): Unit = {
+    println("Your balance is £" + balance)
+
+    readLine match {
+      case "deposit" => {
+        println("depositing £100")
+        loop(balance + 100)
+      }
+      case "withdraw" => {
+        println("withdrawing £100")
+        loop(balance - 100)
+      }
+      case "quit" => ()
+      case _ => loop(balance)
+    }
+  }
 }
