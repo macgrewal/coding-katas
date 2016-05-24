@@ -4,11 +4,24 @@ package romanNum
   * Created by rob on 11/05/16.
   */
 object RomanNum {
-  def get(i: Int): String = i%5 match {
-    case _ if i <= 3 => (1 to i).foldLeft("")((s, i) => s + "I")
-    case 4 => "IV"
-    case 0 => "V"
-    case 1 => "VI"
-    case 2 => "VII"
-  }
+  def get(i: Int) =
+    values.foldLeft((i, "")) {
+      case ((n, s), (k, v)) => (n % k, s + (v * (n / k)))
+    }._2
+
+  val values = Seq(
+    1000 -> "M",
+    900 -> "CM",
+    500 -> "D",
+    400 -> "CD",
+    100 -> "C",
+    90 -> "XC",
+    50 -> "L",
+    40 -> "XL",
+    10 -> "X",
+    9 -> "IX",
+    5 -> "V",
+    4 -> "IV",
+    1 -> "I"
+  )
 }
