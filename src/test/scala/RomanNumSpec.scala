@@ -48,4 +48,34 @@ class RomanNumSpec extends FlatSpec with Matchers{
       RomanNum.get(7)
     }
   }
+
+  it should "return IX for 9" in {
+    assertResult("IX") {
+      RomanNum.get(9)
+    }
+  }
+
+  it should "return XIX for 19" in {
+    assertResult("XIX") {
+      RomanNum.get(19)
+    }
+  }
+
+  it should "return XLIX for 49" in {
+    assertResult("XLIX") {
+      RomanNum.get(49)
+    }
+  }
+
+  it should "return MDCCCLXXXVIII for 1888" in {
+    assertResult("MDCCCLXXXVIII") {
+      RomanNum.get(1888)
+    }
+  }
+
+  it should "return MCMXCIX for 1999" in {
+    assertResult("MCMXCIX") {
+      RomanNum.get(1999)
+    }
+  }
 }
