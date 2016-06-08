@@ -49,4 +49,27 @@ class StringCalculatorSpec extends FlatSpec {
       StringCalculator.add("1\n1,2")
     }
   }
+
+  "Calling Add with //[~]1~2" should "return 3" in {
+    assertResult(3) {
+      StringCalculator.add("//[~]1~2")
+    }
+  }
+
+  "Calling Add with //[xxx]1xxx2" should "return 3" in {
+    assertResult(3) {
+      StringCalculator.add("""//[xxx]1xxx2""")
+    }
+  }
+  "Calling Add with //[xxx][~]1xxx2~3" should "return 6" in {
+    assertResult(6) {
+      StringCalculator.add("""//[xxx][~]1xxx2~3""")
+    }
+  }
+
+  "Calling Add with //[abc][def]1abc2def3" should "return 6" in {
+    assertResult(6) {
+      StringCalculator.add("""//[abc][def]1abc2def3""")
+    }
+  }
 }

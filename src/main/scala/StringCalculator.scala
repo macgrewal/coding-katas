@@ -1,9 +1,10 @@
 object StringCalculator {
- def add(input: String): Int = input match {
-   case "" => 0
-   case _ => {
-     val delimiters = Array(',', '\n')
-     input.split(delimiters).foldLeft(0)(_ + _.toInt)
-   }
- }
+  def add(input: String): Int =
+    """(?<=\[).+?(?=\])""".r
+      .findAllIn(input)
+      .foldLeft(Seq(",", "\n"))((a, b) => a.:+(b))
+      .foldLeft(Seq(input.replaceAll("""\[|\]""", "")))((strings, regex) => strings.flatMap(_.split(regex.replaceAll("\\*","\\*"))))
+      .collect { case string if string.matches("\\d+") => string.toInt }
+      .filter{case n => true}
+      .sum
 }
