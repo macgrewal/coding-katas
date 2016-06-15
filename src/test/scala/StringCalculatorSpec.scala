@@ -2,7 +2,7 @@ import org.scalatest.FlatSpec
 
 class StringCalculatorSpec extends FlatSpec {
 
-  "Calling Add with and empty string" should "return 0" in {
+  "Calling Add with an empty string" should "return 0" in {
     assertResult(0) {
       StringCalculator.add("")
     }

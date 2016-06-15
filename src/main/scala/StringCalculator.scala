@@ -3,8 +3,7 @@ object StringCalculator {
     """(?<=\[).+?(?=\])""".r
       .findAllIn(input)
       .foldLeft(Seq(",", "\n"))((a, b) => a.:+(b))
-      .foldLeft(Seq(input.replaceAll("""\[|\]""", "")))((strings, regex) => strings.flatMap(_.split(regex.replaceAll("\\*","\\*"))))
+      .foldLeft(Seq(input.replaceAll("""\[|\]""", "")))((strings, regex) => strings.flatMap(_.split(regex.replaceAll("\\*", "\\*"))))
       .collect { case string if string.matches("\\d+") => string.toInt }
-      .filter{case n => true}
       .sum
 }
