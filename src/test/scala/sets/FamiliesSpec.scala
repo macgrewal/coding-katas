@@ -34,4 +34,23 @@ class FamiliesSpec extends UnitSpec {
     val families = Seq(smiths, jacksons, bullocks)
   }
 
+  "getMales" should {
+    "return only males" in {
+      FamilySorting.getMales(TestData.smiths) shouldBe Seq(Dad("Will Smith", 35), Son("Jayden Smith", 12))
+    }
+  }
+
+  "getAdults" should {
+    "return people 18 or older" in {
+      FamilySorting.getAdults(TestData.smiths) shouldBe Seq(Dad("Will Smith", 35), Mum("Jada Pinkett", 42))
+    }
+  }
+
+  "getAdultMales" should {
+    "return males aged 18 or over" in {
+      FamilySorting.getAdultMalesF(TestData.smiths) shouldBe Seq(Dad("Will Smith", 35))
+    }
+  }
+
+
 }
