@@ -36,7 +36,7 @@ class FamiliesSpec extends UnitSpec {
 
   "getMales" should {
     "return only males" in {
-      FamilySorting.getMales(TestData.smiths) shouldBe Seq(Dad("Will Smith", 35), Son("Jayden Smith", 12))
+      FamilySorting.javaGetMales(TestData.smiths) shouldBe Seq(Dad("Will Smith", 35), Son("Jayden Smith", 12))
     }
   }
 

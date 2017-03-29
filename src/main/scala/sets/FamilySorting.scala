@@ -1,9 +1,29 @@
 package sets
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by rob on 29/03/17.
   */
 object FamilySorting {
+  //Imperative form of code just for an example of how functional code can be much more readable
+  def javaGetMales(people: Seq[Person]): Seq[Person] = {
+    //Creating an empty "ArrayList" kind of structure
+    val males = new ArrayBuffer[Person]()
+
+    //For each Person in people
+    //If the person is male
+    //Add it to the males list
+    for(person:Person <- people){
+      if (person.isMale) {
+        males += person
+      }
+    }
+
+    //Don't need the return keyword in Scala, the last element in a block is returned
+    males
+  }
+
   //Method that takes a list of people and returns those whose isMale value is true
   def getMales(people: Seq[Person]): Seq[Person] = people filter (_.isMale)
 
@@ -22,7 +42,6 @@ object FamilySorting {
   //Functional style definition that takes a list
   // of people and returns those who pass the isMale function
   val getMalesF: Seq[Person] => Seq[Person] = _ filter isMale
-
 
   //Functional style definition that takes a person and returns whether
   // that person's age value is over or equal to 18
