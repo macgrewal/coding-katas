@@ -9,28 +9,33 @@ import base.UnitSpec
   */
 class UserValidationSpec extends UnitSpec {
 
-  "BasicPatternMatching" should {
-    "return welcome message for the user Jason" in {
+  "UserValidation#validateUser" should {
+    "return welcome response for the user Jason" in {
 
-      UserValidation.validateUser(UserModel(JASON, JASON_AGE)) shouldBe "Hi Jason!"
+      UserValidation.validateUser(UserModel(JASON, JASON_ID)) shouldBe "Hi Jason!"
+
+    }
+
+    "return welcome response for the user Tom" in {
+
+      UserValidation.validateUser(UserModel(TOM, TOM_ID)) shouldBe "Hi Tom!"
 
     }
 
-    "return Hi for the user Tom" in {
+    "return error response for not registered user" in {
 
-      UserValidation.validateUser(UserModel(TOM, TOM_AGE)) shouldBe "Hi Tom!"
-
-    }
-    "return error message for not registered user" in {
-
+      // Note only the userName parameter is supplied to the UserModel constructor.
+      // This implies the default `age` parameter is to be used.
       UserValidation.validateUser(UserModel(AMY)) shouldBe "Amy is not registered."
 
     }
-    "return error message for registered user" in {
 
+    "return error response for registered user" in {
+
+      // Note no parameters are supplied to the UserModel constructor.
+      // This implies the default parameters are to be used.
       UserValidation.validateUser(UserModel()) shouldBe "Jessica is not registered."
 
     }
   }
-
 }

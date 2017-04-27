@@ -10,7 +10,7 @@ object Constants {
   val ALICE = "Alice"
   val DEFAULT_USER = "Jessica"
 
-  val JASON_AGE = 25
-  val TOM_AGE = 25
-  val DEFAULT_AGE = 22
+  val JASON_ID = 25
+  val TOM_ID = 25
+  val DEFAULT_ID = 22
 }
