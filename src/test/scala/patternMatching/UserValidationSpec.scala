@@ -28,10 +28,6 @@ class UserValidationSpec extends UnitSpec {
       // This implies the default `age` parameter is to be used.
       UserValidation.validateUser(UserModel(AMY)) shouldBe "Amy is not registered."
 
-    }
-
-    "return error response for registered user" in {
-
       // Note no parameters are supplied to the UserModel constructor.
       // This implies the default parameters are to be used.
       UserValidation.validateUser(UserModel()) shouldBe "Jessica is not registered."
