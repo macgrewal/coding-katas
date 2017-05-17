@@ -18,16 +18,21 @@ class Rover(position: Position = Position(0,0), direction: Char = 'N', instructi
     var CurrentPosition = rover.getPosition()
     var CurrentDirection = rover.getDirection()
     for (i <- instructions.indices) {
-      if ("NSEW".contains(instructions(i))) CurrentDirection = instructions(i)
-      if (instructions(i) == 'M') {
-        CurrentDirection match{
-          case 'N' => CurrentPosition = Position(CurrentPosition.xPos, CurrentPosition.yPos + 1)
-          case 'S' => CurrentPosition = Position(CurrentPosition.xPos, CurrentPosition.yPos - 1)
-          case 'W' => CurrentPosition = Position(CurrentPosition.xPos - 1, CurrentPosition.yPos)
-          case 'E' => CurrentPosition = Position(CurrentPosition.xPos + 1 , CurrentPosition.yPos)
+      instructions(i) match {
+        case 'N' => CurrentDirection = 'N'
+        case 'E' => CurrentDirection = 'E'
+        case 'S' => CurrentDirection = 'S'
+        case 'W' => CurrentDirection = 'W'
+        case 'M' => {
+          CurrentDirection match{
+            case 'N' => CurrentPosition = Position(CurrentPosition.xPos, CurrentPosition.yPos + 1)
+            case 'S' => CurrentPosition = Position(CurrentPosition.xPos, CurrentPosition.yPos - 1)
+            case 'W' => CurrentPosition = Position(CurrentPosition.xPos - 1, CurrentPosition.yPos)
+            case 'E' => CurrentPosition = Position(CurrentPosition.xPos + 1 , CurrentPosition.yPos)
+          }
         }
       }
     }
-    new Rover(CurrentPosition, CurrentDirection)
-    }
+  new Rover(CurrentPosition, CurrentDirection)
+  }
 }
