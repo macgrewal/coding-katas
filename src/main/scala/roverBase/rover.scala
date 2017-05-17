@@ -4,11 +4,7 @@ import scala.math
 case class Position(xPos: Int, yPos: Int)
 
 class Planet(minPos: Position, maxPos: Position){
-  def calculateSize(): Int = {
-    val width: Int = scala.math.abs(minPos.xPos) + scala.math.abs(maxPos.xPos)
-    val height: Int = scala.math.abs(minPos.yPos) + scala.math.abs(maxPos.yPos)
-    width * height
-  }
+  def calculateSize(): Int = (scala.math.abs(minPos.xPos) + scala.math.abs(maxPos.xPos)) * (scala.math.abs(minPos.yPos) + scala.math.abs(maxPos.yPos))
 }
 
 class Rover(position: Position = Position(0,0), direction: Char = 'N', instructions: List[Char] = List.empty[Char]) {

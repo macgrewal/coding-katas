@@ -1,7 +1,6 @@
 package marsRover
 
 import base.UnitSpec
-import com.sun.xml.internal.ws.dump.LoggingDumpTube.Position
 import org.scalatest.{WordSpec, Matchers}
 
 class MarsRoverTests extends WordSpec with Matchers {
@@ -11,9 +10,7 @@ class MarsRoverTests extends WordSpec with Matchers {
       mars.calculateSize() should be (400)
     }
   }
-
-
-    "Rover" can {
+  "Rover" can {
       "Land on planet" in {
         var roverOne = new Rover()
         roverOne.getPosition() should be (Position(0,0))
